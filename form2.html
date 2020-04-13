@@ -1,0 +1,66 @@
+<html>
+  <head> </head>
+  <body>
+    <!-- simple number -->
+    <form id="q1">How old are you?<input type="number" id="q1_age" name="q1" /></form>
+
+    <!-- simple text -->
+    <form id="q2">Type a word<input type="text" id="q2_text" name="q2" /></form>
+
+    <!-- simple radio -->
+    <form id="q3">
+      select one:<br />
+      <input type="radio" id="q3_dog" name="q3" value="dog" /><label for="q3_dog">dog</label>
+      <input type="radio" id="q3_cat" name="q3" value="cat" /><label for="q3_cat">cat</label>
+      <input type="radio" id="q3_fish" name="q3" value="fish" /><label for="q3_fish">fish</label>
+    </form>
+
+    <!-- simple radio -->
+    <form id="q4">
+      select one or more:<br />
+      <input type="checkbox" id="q4_dog" name="q4" value="dog" /><label for="q4_dog">dog</label>
+      <input type="checkbox" id="q4_cat" name="q4" value="cat" /><label for="q4_cat">cat</label>
+      <input type="checkbox" id="q4_fish" name="q4" value="fish" /><label for="q4_fish">fish</label>
+      <input type="checkbox" id="q4_mouse" name="q4" value="mouse" /><label for="q4_mouse">mouse</label>
+    </form>
+
+    <script>
+      let res = {
+        q1: ["10"],
+        q2: ["dog"],
+        q3: ["dog"],
+        q4: ["dog", "cat"],
+      };
+
+      function fillForm() {
+        // go through the form and fill in all the values...
+        Object.getOwnPropertyNames(res).forEach((element) => {
+          let formElement = document.getElementById(element);
+          // get input elements with name="element"
+          let selector = "input[name='" + element + "']";
+          let inputElements = [...formElement.querySelectorAll(selector)];
+          let value = res[element];
+          console.log(inputElements);
+
+          if (inputElements.length > 1) {
+            // we have either a radio button or checkbox...
+            console.log("rb or cb");
+            value.forEach((v) => {
+              selector = "input[value='" + v + "']";
+              inputElements
+                .filter((x) => x.value == v)
+                .forEach((x) => {
+                  x.checked = true;
+                });
+            });
+          } else {
+            // we have something else...
+            // set the value...
+            if (value.length == 1) inputElements[0].value = value[0];
+          }
+        });
+      }
+      window.onload = fillForm;
+    </script>
+  </body>
+</html>
