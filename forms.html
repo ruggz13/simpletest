@@ -1,0 +1,58 @@
+<html>
+  <head></head>
+  <body>
+    <!-- simple number -->
+    <form id="q1">How old are you <input type="number" id="q1_age" name="q1_age" /></form>
+
+    <!-- simple text -->
+    <form id="q2">Type a word <input type="text" id="q2_text" name="q2_text" /></form>
+
+    <!-- simple radio -->
+    <form id="q3">
+      select one:<br />
+      <input type="radio" id="q3_dog" name="q3_pet" value="dog" /> dog
+      <input type="radio" id="q3_cat" name="q3_pet" value="cat" /> cat
+      <input type="radio" id="q3_fist" name="q3_pet" value="fish" /> fish
+    </form>
+
+    <script>
+      let res = {
+        q1: {
+          q1_age: "10",
+        },
+        q2: {
+          q2_text: "pickle",
+        },
+        q3: {
+          q3_pet: "dog",
+        },
+      };
+
+      function fillForm() {
+        // go through the form and fill in all the values...
+        Object.getOwnPropertyNames(res).forEach((element) => {
+          let formElement = document.getElementById(element);
+          // each question can have multiple items in the json ...
+          Object.getOwnPropertyNames(res[element]).forEach((elementName) => {
+            // for each item in the json... get the
+            // form element with the appropriate variable name...
+            let selector = "input[name='" + elementName + "']";
+            let elementsWithName = [...formElement.querySelectorAll(selector)];
+
+            //if the element with name array has 1 item... set the value...
+            if (elementsWithName.length == 1) {
+              elementsWithName[0].value = res[element][elementName];
+            } else {
+              // if the array is larger than length 1...
+              // we have either a radiobutton or a checkbox...
+              console.log("Either Radio or checkbox... selected value=", res[element][elementName]);
+              selector = "input[value='" + res[element][elementName] + "']";
+              formElement.querySelector(selector).checked = true;
+            }
+          });
+        });
+      }
+      window.onload = fillForm;
+    </script>
+  </body>
+</html>

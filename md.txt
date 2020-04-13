@@ -1,0 +1,9 @@
+[Q1]
+How old are you
+|#|name:age|xor:age|
+
+or if it is easier what year were you born
+|#|name:yearborn|xor:age|
+
+[END]
+Thank you for answering.

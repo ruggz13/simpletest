@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="test.css" />
+  </head>
+  <body>
+    <div width="75%">
+      <form id="xor" action="#">
+        <label for="x1">input x1</label>
+        <input type="text" name="test1" id="x1" />
+        <label for="x2">OR x2</label>
+        <input type="text" name="test1" id="x2" />
+        <label for="x3">OR x3</label>
+        <input type="text" name="test1" id="x3" onchange="toggle(this)" />
+        <label for="x4">OR x4</label>
+        <input type="text" name="test1" id="x4" onchange="toggle" />
+        <label for="x5">OR x5</label>
+        <input id="x5" type="text" list="stuff" name="test1" />
+        <input id="num" type="number" min="3" max="10" required />
+        <datalist id="stuff">
+          <option value="red"></option>
+          <option value="green"></option>
+          <option value="blue"></option>
+        </datalist>
+
+        <input type="submit" value="lala" />
+      </form>
+    </div>
+
+    <script>
+      let toggle = function (event) {
+        let target = event.target;
+        let sibs = [...event.target.parentElement.children];
+        sibs = sibs.filter((x) => x.name == target.name && x.id != target.id);
+        sibs.forEach((x) => (x.value = ""));
+        console.log(sibs);
+      };
+
+      x1.onchange = toggle;
+      x2.onchange = toggle;
+      x3.onchange = toggle;
+      x4.onchange = toggle;
+      x5.onchange = toggle;
+
+      handleSumbit = function (event) {
+        event.preventDefault();
+        makeJSON(event.target);
+      };
+
+      xor.onsubmit = handleSumbit;
+
+      makeJSON = function (formElement) {
+        console.log(formElement);
+        inputs = [...formElement.querySelectorAll("input")];
+        inputs = inputs.filter((x) => ["number", "text"].includes(x.type));
+        obj = {};
+        inputs.forEach((x) => (obj[x.id] = x.value));
+        console.log(JSON.stringify(obj));
+      };
+    </script>
+  </body>
+</html>
