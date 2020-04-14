@@ -1,0 +1,29 @@
+[NAME] What is your name?
+
+[FST_NAME] First name |__|
+
+[LST_NAME] Last name |__|
+
+[AGE] {$FST_NAME}, how old are you?
+|__|__|
+
+[OWNER] Do you own a pet?
+#YN
+
+[PETS] Select from below all the animals you think make good pets.  Select as many as apply.
+[1] Dogs -> BREED
+[2] Cats
+[3] Fish
+[4] Birds
+[5] Other: Specify [text box:otherpets]
+
+[BREED] List your favorite breed of dog
+|__|
+
+[WALK] How many times per day should a dog be walked?
+(1) Once per day
+(2) Two times per day
+(3) Three or more times per day
+(99) Prefer not to answer
+
+[END] Thank you and have a nice day.
