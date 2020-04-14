@@ -1,0 +1,14 @@
+[Q1!] Do you like chocolate?
+(1) yes
+(0) no -> Q2
+
+[Q1A] Which type of chocolate do you prefer?
+(0) dark chocolate
+(1) milk chocolate
+(2) white chocolate
+
+[Q2] Do you wear socks at work?
+(1) yes
+(0) no
+
+[END] Thank you and have a nice day.
