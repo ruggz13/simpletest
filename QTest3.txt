@@ -7,7 +7,7 @@
 (1) Yes
 (0) No -> _CONTINUE
 
-[Q3,,displayif=greaterThanOrEqual(NKIDS,#loop)] how old is child # #loop?
+[Q3,displayif=greaterThanOrEqual(NKIDS,#loop)] how old is child # #loop?
 |__|__|KIDAGE|
 
 </loop>
