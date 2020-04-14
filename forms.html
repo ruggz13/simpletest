@@ -1,27 +1,29 @@
 <html>
-  <head></head>
+  <head>
+    <link rel="stylesheet" href="test.css" />
+  </head>
   <body>
     <!-- simple number -->
-    <form id="q1">How old are you <input type="number" id="q1_age" name="q1_age" /></form>
+    <form id="q1">How old are you?<input type="number" id="q1_age" name="q1_age" min="3" max="100" required /></form>
 
     <!-- simple text -->
-    <form id="q2">Type a word <input type="text" id="q2_text" name="q2_text" /></form>
+    <form id="q2">Type a word<input type="text" id="q2_text" name="q2_text" /></form>
 
     <!-- simple radio -->
     <form id="q3">
       select one:<br />
-      <input type="radio" id="q3_dog" name="q3_pet" value="dog" /> dog
-      <input type="radio" id="q3_cat" name="q3_pet" value="cat" /> cat
-      <input type="radio" id="q3_fish" name="q3_pet" value="fish" /> fish
+      <input type="radio" id="q3_dog" name="q3_pet" value="dog" /><label for="q3_dog">dog</label>
+      <input type="radio" id="q3_cat" name="q3_pet" value="cat" /><label for="q3_cat">cat</label>
+      <input type="radio" id="q3_fish" name="q3_pet" value="fish" /><label for="q3_fish">fish</label>
     </form>
 
     <!-- simple radio -->
     <form id="q4">
       select one or more:<br />
-      <input type="checkbox" id="q4_dog" name="q4_pet" value="dog" /> dog
-      <input type="checkbox" id="q4_cat" name="q4_pet" value="cat" /> cat
-      <input type="checkbox" id="q4_fist" name="q4_pet" value="fish" /> fish
-      <input type="checkbox" id="q4_fist" name="q4_pet" value="mouse" /> mouse
+      <input type="checkbox" id="q4_dog" name="q4_pet" value="dog" /><label for="q4_dog">dog</label>
+      <input type="checkbox" id="q4_cat" name="q4_pet" value="cat" /><label for="q4_cat">cat</label>
+      <input type="checkbox" id="q4_fish" name="q4_pet" value="fish" /><label for="q4_fish">fish</label>
+      <input type="checkbox" id="q4_mouse" name="q4_pet" value="mouse" /><label for="q4_mouse">mouse</label>
     </form>
 
     <script>

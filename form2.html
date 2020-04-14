@@ -40,11 +40,9 @@
           let selector = "input[name='" + element + "']";
           let inputElements = [...formElement.querySelectorAll(selector)];
           let value = res[element];
-          console.log(inputElements);
 
           if (inputElements.length > 1) {
             // we have either a radio button or checkbox...
-            console.log("rb or cb");
             value.forEach((v) => {
               selector = "input[value='" + v + "']";
               inputElements
