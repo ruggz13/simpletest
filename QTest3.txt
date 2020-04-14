@@ -1,0 +1,16 @@
+[Q1] how many kids
+|__|__|NKIDS|
+
+<loop max=5>
+
+[Q2,displayif=greaterThanOrEqual(NKIDS,#loop)] is your child # #loop alive?
+(1) Yes
+(0) No -> _CONTINUE
+
+[Q3,,displayif=greaterThanOrEqual(NKIDS,#loop)] how old is child # #loop?
+|__|__|KIDAGE|
+
+</loop>
+
+[DONE]
+THANK YOU!!!
