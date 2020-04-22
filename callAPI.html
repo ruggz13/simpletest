@@ -1,0 +1,36 @@
+<html>
+  <head> <link rel="stylesheet" href="q.css"></head>
+  <body>
+    <div class="question"></div>
+      <form id="q1" callsoccer>What is your job title? <input id="jobtitle" type="text" /><input type="submit" /></form>
+        
+    </div>
+    <div class="question"><div id="soccerRes"></div></div>
+
+    <script>
+      res = {};
+      q1.onsubmit = xxx;
+      async function xxx(event) {
+        event.preventDefault();
+        const id = event.target.id;
+
+        const jobTitle = document.getElementById("jobtitle").value;
+        // call soccer...
+        fetch(`https://sitf-cwlcji5kxq-uc.a.run.app/soccer/code?title=${jobTitle}`)
+          .then((response) => {
+            return response.json();
+          })
+          .then((res) => {
+            console.log(res);
+            let respString = `<form id="SOCCODE">Select any of these that you would say is your occupation or none if none of them well describe your job? `;
+            res.forEach((soc, indx) => {
+              console.log();
+              respString += ` <input type = 'checkbox' value=${soc.code} id="${id}_${indx}"> <label for="${id}_${indx}">${soc.label}</label> `;
+            });
+            respString += `<input type="submit" value="next">`
+            document.getElementById("soccerRes").innerHTML = respString;
+          });
+      }
+    </script>
+  </body>
+</html>

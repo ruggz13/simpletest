@@ -1,0 +1,20 @@
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  padding: 10px;
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: block;
+  text-align: center;
+  background-color: cornsilk;
+  border: 3px solid cornsilk;
+}
+input[type="checkbox"] + label:hover {
+  border: 3px solid black;
+}
+
+input[type="checkbox"]:checked + label {
+  background-color: wheat;
+}
