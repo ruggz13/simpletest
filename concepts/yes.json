@@ -1,0 +1,7 @@
+{
+  "@context": "https://github.com/danielruss/simpletest/concepts",
+  "@id": "https://danielruss.github.io/simpletest/concepts/yes.json",
+  "type": "response",
+  "definition": "an affirmative or yes response to the question",
+  "value": "1"
+}
