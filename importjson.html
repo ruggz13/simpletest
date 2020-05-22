@@ -1,0 +1,22 @@
+<html>
+  <head> </head>
+  <body>
+    <textarea id="json_input"></textarea>
+    <input type="button" id="updater" value="add JSON to memory" />
+    <div id="display"></div>
+    <script>
+      updater.onclick = function (event) {
+        console.log(event);
+        let txt = "";
+        try {
+          json = JSON.parse(json_input.value);
+          console.log(json);
+          txt = "added json... ";
+        } catch (err) {
+          txt = "caught error: " + err;
+        }
+        display.innerText = txt;
+      };
+    </script>
+  </body>
+</html>
