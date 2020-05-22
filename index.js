@@ -5,7 +5,7 @@ window.onload = async () => {
   const response = await transform.render(
     {
       //url: 'https://jonasalmeida.github.io/privatequest/mod1_abridged.txt',
-      url: "https://danielruss.github.io:5501/questionnaires/SITFTest.txt",
+      url: "https://danielruss.github.io/simpletest/SITFTest.txt",
       activate: true,
     },
     "root"
