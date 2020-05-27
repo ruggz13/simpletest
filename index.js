@@ -1,42 +1,38 @@
 import { transform } from "https://episphere.github.io/quest/replace2.js";
 import { rbAndCbClick } from "https://episphere.github.io/quest/questionnaire.js";
 
-async function callSOCcer(jobtitle) {
-  return await (await fetch(`https://sitf-cwlcji5kxq-uc.a.run.app/soccer/code?title=${jobtitle}`)).json();
-}
-
-function buildHTML(soccerResults, responseElement) {
+function buildHTML(soccerResults, question, responseElement) {
   if (responseElement) {
     let tmp = responseElement.cloneNode(false);
-    occ.replaceChild(tmp, responseElement);
+    question.replaceChild(tmp, responseElement);
     responseElement = tmp;
   } else {
     responseElement = document.createElement("div");
     responseElement.classList.add("response");
-    occ.insertBefore(responseElement, occ.childNodes[0]);
+    question.insertBefore(responseElement, question.childNodes[0]);
     let questionText = document.createTextNode("Please identify the occupation category that best describes this job.");
     responseElement.append(questionText);
   }
   soccerResults.forEach((soc, indx) => {
     let resp = document.createElement("input");
     resp.type = "radio";
-    resp.id = `OCCUPTN1_${indx}`;
+    resp.id = `${question.id}_${indx}`;
     resp.value = soc.code;
     resp.name = "SOCcerResults";
     resp.onclick = rbAndCbClick;
     let label = document.createElement("label");
-    label.setAttribute("for", `OCCUPTN1_${indx}`);
+    label.setAttribute("for", `${question.id}_${indx}`);
     label.innerText = soc.label;
     responseElement.append(resp, label);
   });
   let resp = document.createElement("input");
   resp.type = "radio";
-  resp.id = "OCCUPTN1_NOTA";
+  resp.id = `${question.id}_NOTA`;
   resp.value = "NONE_OF_THE_ABOVE";
   resp.name = "SOCcerResults";
   resp.onclick = rbAndCbClick;
   let label = document.createElement("label");
-  label.setAttribute("for", "OCCUPTN1_NOTA");
+  label.setAttribute("for", `${question.id}_NOTA`);
   label.innerText = "NONE OF THE ABOVE";
 
   responseElement.append(resp, label);
@@ -59,11 +55,11 @@ window.onload = async () => {
       const occ = document.getElementById("OCCUPTN1");
 
       // call soccer...
-      let soccerResults = callSOCcer(jobtitle);
+      let soccerResults = await (await fetch(`https://sitf-cwlcji5kxq-uc.a.run.app/soccer/code?title=${jobtitle}`)).json();
       console.log(soccerResults);
 
       let responseElement = occ.querySelector("div[class='response']");
-      buildHTML(soccerResults, responseElement);
+      buildHTML(soccerResults, occ, responseElement);
     });
 
     document.getElementById("WORK7").addEventListener("submit", async (e) => {
@@ -72,11 +68,11 @@ window.onload = async () => {
       const occ = document.getElementById("OCCUPTN2");
 
       // call soccer...
-      let soccerResults = callSOCcer(jobtitle);
+      let soccerResults = await (await fetch(`https://sitf-cwlcji5kxq-uc.a.run.app/soccer/code?title=${jobtitle}`)).json();
       console.log(soccerResults);
 
       let responseElement = occ.querySelector("div[class='response']");
-      buildHTML(soccerResults, responseElement);
+      buildHTML(soccerResults, occ, responseElement);
     });
   }
 };
