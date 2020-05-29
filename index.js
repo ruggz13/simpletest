@@ -41,8 +41,8 @@ function buildHTML(soccerResults, question, responseElement) {
 window.onload = async () => {
   const response = await transform.render(
     {
-      //url: 'https://jonasalmeida.github.io/privatequest/mod1_abridged.txt',
-      url: "https://danielruss.github.io/simpletest/SITFTest.txt",
+      url: "https://jonasalmeida.github.io/privatequest/demo2.txt",
+      //url: "https://danielruss.github.io/simpletest/SITFTest.txt",
       activate: true,
     },
     "root"

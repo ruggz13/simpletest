@@ -1,0 +1,13 @@
+.blueback {
+  background-color: blue;
+  border: 2px yellow;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.lightback {
+  border: 2px yellow;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  background-color: cornsilk;
+}

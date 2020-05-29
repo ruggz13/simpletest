@@ -1,0 +1,53 @@
+<html>
+  <head>
+      <link rel="stylesheet" type="text/css" href="workerTest.css"></link>
+    <script>
+      // Check that service workers are supported
+      if ("serviceWorker" in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/workerTest.js");
+        });
+      }
+    </script>
+    <script src="fill.js"></script>
+  </head>
+  <body>
+    <form id="workerTestForm">
+      <input type="text" id="text1" name="text1" />
+      <input type="submit" />
+    </form>
+    <div id="res"></div>
+  </body>
+
+  <script>
+    const SOCcerURL = "https://sitf-cwlcji5kxq-uc.a.run.app/soccer/code?title=";
+    async function callSOCcer(jobtitle) {
+      let SOCcerResults = await (await fetch(`${SOCcerURL}${jobtitle}`)).json();
+      let div = document.createElement("div");
+      let span = document.createElement("span");
+      div.appendChild(span);
+      div.classList.add("results")
+      span.innerText = `${jobtitle}:  `;
+      span.classList.add("soccerResult");
+      SOCcerResults.forEach((code) => {
+        span = document.createElement("span");
+        span.innerText = `${code.code}: ${code.label}  `;
+        span.classList.add("soccerResult");
+        div.appendChild(span);
+      });
+      console.log(SOCcerResults);
+      document.getElementById("res").appendChild(div);
+    }
+    function el(event) {
+      event.preventDefault();
+      let jobtitle = document.getElementById("text1").value;
+      console.log("you entered... ", jobtitle);
+      if (jobtitle) {
+        callSOCcer(jobtitle);
+      }
+    }
+    document.getElementById("workerTestForm").addEventListener("submit", el);
+    console.log("lalala");
+  </script>
+</html>
